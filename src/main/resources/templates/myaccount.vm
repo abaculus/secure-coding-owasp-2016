@@ -1,0 +1,10 @@
+<html>
+    <body>
+        <h1>My Account</h1>
+        <div><label>Id: $!myAccountUser.id</div>
+        <div><label>Name: $!myAccountUser.name</div>
+        <div><label>Password: $escapeTool.html($!myAccountUser.password)</div>
+        <div></div>
+    </body>
+</html>
+

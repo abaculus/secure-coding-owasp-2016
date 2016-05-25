@@ -1,0 +1,7 @@
+# Disable tools such as jcmd, jstack, jmap, and jinfo
+-XX:+DisableAttachMechanism
+
+# Disable heapdump on OutOfMemoryError
+-XX:+HeapDumpOnOutOfMemory
+# avoid saving heapdump
+-XX:HeapDumpPath=/dev/null

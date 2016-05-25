@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<!-- A8 -->
+    	<meta name="_csrf" content="${_csrf.token}"/>   
+    	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+	</head>
+    <body>
+    	<form method="post" action="/login">
+    		<div><label>User: <input type="text" name="username" id="username" /></label></div>
+    		<div><label>Password: <input type="password" name="password" id="password" /></label></div>
+    		<div><input type="submit" value="Sign In"/></div>
+    		<!-- A8 -->
+    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
+    </body>
+</html>
