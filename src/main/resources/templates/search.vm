@@ -1,0 +1,14 @@
+<html>
+    <body>
+    	<form method="post" action="/search">
+    		<div><label>Search (username): <input type="text" name="username" id="username" /></label></div>
+    		<div><input type="submit" value="Go!"/></div>
+    		<div><input type="checkbox" name="good" id="good" />Safe</div>
+    		<!-- A8 -->
+    		<input type="hidden" name="$_csrf.parameterName" value="$_csrf.token"/>
+    		#foreach ($user in $users)
+    			User <strong>$user.name</strong> with password <code>$escapeTool.html($user.password)</code><br />
+    		#end
+        </form>
+    </body>
+</html>

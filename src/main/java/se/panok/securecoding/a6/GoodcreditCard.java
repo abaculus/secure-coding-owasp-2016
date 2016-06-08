@@ -4,6 +4,13 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
 
+/*
+ * With an array, you can explicitly wipe the data after you're done with it.
+ * You can overwrite the array with anything you like, and the password won't be
+ * present anywhere in the system, even before garbage collection.
+ * 
+ * But(!) even using char[] only reduces the window of opportunity for an attacker.
+ */
 public class GoodcreditCard implements Cloneable, Serializable {
 
 	private char[] cardNumber;
@@ -32,11 +39,11 @@ public class GoodcreditCard implements Cloneable, Serializable {
 		throw new java.lang.CloneNotSupportedException();
 	}
 
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+	/*private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 		throw new IOException("Class cannot be deserialized");
 	}
 
 	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 		throw new IOException("Class cannot be deserialized");
-	}
+	}*/
 }

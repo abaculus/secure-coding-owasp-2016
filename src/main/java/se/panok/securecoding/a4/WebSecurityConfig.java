@@ -27,8 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests()
-        .antMatchers("/goodhello", "/badhello").permitAll()
+		http/*.csrf().disable()*/.authorizeRequests()
+        .antMatchers("/hello", "/search", "/adduser").permitAll()
         .antMatchers("/secret").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
         .anyRequest().fullyAuthenticated()
         .and()
@@ -43,7 +43,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .logoutSuccessUrl("/login")
         .permitAll()
         .and()
-        .rememberMe();
+        .rememberMe()
+        .and()
+        .sessionManagement()
+        .maximumSessions(2)
+        .maxSessionsPreventsLogin(true);
 		
 		// http://docs.spring.io/autorepo/docs/spring-security/current/apidocs/org/springframework/security/config/annotation/web/builders/HttpSecurity.html
 		// http://docs.spring.io/autorepo/docs/spring-security/current/apidocs/org/springframework/security/config/annotation/web/configurers/HeadersConfigurer.html
@@ -73,5 +77,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser("user").password("$2a$10$qiv3S.wTdSzBRGeLXSudFOgcJqczOXSueNydbMBkSOEHPS6KUAY.2").roles("USER");
 		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser("admin").password("$2a$10$q4fZwAdJrCwtBVgzah/9o.Erze7zPENwubPZH58TXIuUJQbpFDjv6").roles("ADMIN");
+		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder()).withUser("andreas").password("$2a$10$p2jRw6jBTZ7F7sSy6y25tuHtnK.KgA.uXJ4pNoeAvM16Y5sV3slNm").roles("ADMIN");
 	}
 }

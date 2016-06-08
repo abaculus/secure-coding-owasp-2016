@@ -5,7 +5,6 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -28,8 +27,6 @@ public class SqlInjectionTest {
 	@Test
 	public void testIntentionOfInsecureRepository() {
 		insecureRepository.getUserByName("andreas").forEach(user -> logger.info("User = {}", user));
-		
-		System.err.println(new BCryptPasswordEncoder().encode("admin"));
 	}
 
 	@Test

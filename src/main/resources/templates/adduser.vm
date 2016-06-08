@@ -1,11 +1,14 @@
 <html>
     <body>
-    	<form method="post" action="/login">
+    	<form method="post" action="/adduser">
     		<div><label>User: <input type="text" name="username" id="username" /></label></div>
     		<div><label>Password: <input type="password" name="password" id="password" /></label></div>
-    		<div><input type="submit" value="Sign In"/></div>
+    		<div><input type="submit" value="Create"/></div>
     		<!-- A8 -->
     		<input type="hidden" name="$_csrf.parameterName" value="$_csrf.token"/>
         </form>
+        #if ($!rowsAffected == 1)
+        <div>User was added successfully!</div>
+        #end
     </body>
 </html>
